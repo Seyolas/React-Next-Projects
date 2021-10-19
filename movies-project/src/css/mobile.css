@@ -1,0 +1,33 @@
+@media  screen and (max-width: 500px) {
+
+  #navbar{
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    width: 80vw;
+  }
+
+  .navbar-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: space-between; */
+  }
+
+  .link{
+    padding: 1rem;
+    
+  }
+
+  input{
+    width: 50vw;
+    height: 30px;
+    padding: 0.5rem;
+    border:none;
+    color:red;
+}
+
+    
+    
+    
+    
+}
