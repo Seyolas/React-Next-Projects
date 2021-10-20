@@ -16,7 +16,7 @@ const Navbar = () => {
           
           <div>
           <h1>Search Movies</h1>
-          <input type="text" value={query} onChange={handleChange} placeholder='Search Movie' />
+          <input autoFocus='true' type="text" value={query} onChange={handleChange} placeholder='Search Movie' />
           <div className='alert'>{alert.show && alert.msg}</div>
           </div>
             <div className='right-links'>

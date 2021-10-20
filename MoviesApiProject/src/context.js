@@ -17,19 +17,18 @@ const AppProvider = ({ children }) => {
     const response = await data.json();
     console.log(response);
     if (response.Error === 'Too many results.' && response.Response==='False') {
-     
+      setLoading(false);
       setAlert({show:true,msg:'too many results'});
     }
     else if (response.Response==='False') {
       setLoading(false);
       setAlert({show:false});
-      // setAlert({show:true,msg:'No matches'});
+      
     }
     else{
       setMovies(response.Search);
       setLoading(false);
-      // setAlert({show:false,msg:''});
-
+     
     }
 
   }
@@ -44,15 +43,13 @@ const AppProvider = ({ children }) => {
 
   }, [query])
 
-  return <AppContext.Provider value={{movies,query,setQuery,alert,setAlert, loading}}>
+  return <AppContext.Provider value={{movies,query,setQuery,alert,setAlert, loading,setLoading}}>
       {children}</AppContext.Provider>
 
 }
-// make sure use
+
 export const useGlobalContext = () => {
   return useContext(AppContext)
 }
 
 export { AppContext, AppProvider }
-
-

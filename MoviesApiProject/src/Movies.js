@@ -18,9 +18,11 @@ const Movies = () => {
             const {Poster,Title,imdbID} = i;
             return( 
          
-            <Link to={`/${imdbID}`} className='item' key={imdbID}> 
+            <Link to={`/${imdbID}`} className='movie' key={imdbID}> 
             <img src={Poster ==='N/A' ? url_photo : Poster } alt={Title} />
-
+            <div className="movie-info">
+            <h4 className='title'>{Title}</h4>
+            </div>      
             </Link>
             )
 
