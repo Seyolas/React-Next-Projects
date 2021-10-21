@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
-import Error from './Error';
 const SingleMovie = () => {
    
     const { id } = useParams()
     const [singleMovie,setSingleMovie] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [errPage,seterrPage] = useState(false);
-    const api = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_ACCESS_KEY}&i=${id}`
+    
+    const api = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_ACCESS_KEY}&i=${id}`
+
     // Title,Year,Relased,Runtime,Writer,Plot
     const fetchSingleMovie = async (api)=>{
        
