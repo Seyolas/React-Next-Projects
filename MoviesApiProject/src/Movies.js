@@ -21,7 +21,7 @@ const Movies = () => {
             <Link to={`/${imdbID}`} className='movie' key={imdbID}> 
             <img src={Poster ==='N/A' ? url_photo : Poster } alt={Title} />
             <div className="movie-info">
-            <h4 className='title'>{Title}</h4>
+           <h4 className='title'>{Title}</h4>
             </div>      
             </Link>
             )

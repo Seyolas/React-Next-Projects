@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import { useGlobalContext } from './context'
 
 const Navbar = () => {
-  const {alert,setAlert,query,setQuery} = useGlobalContext();
+  const {alert,query,setQuery} = useGlobalContext();
 
   const handleChange = (e)=>{
     e.preventDefault();
@@ -14,7 +14,7 @@ const Navbar = () => {
 
           <ul className='navbar-items'>
           
-          <div>
+          <div className='flex-input'>
           <h1>Search Movies</h1>
           <input autoFocus='true' type="text" value={query} onChange={handleChange} placeholder='Search Movie' />
           <div className='alert'>{alert.show && alert.msg}</div>

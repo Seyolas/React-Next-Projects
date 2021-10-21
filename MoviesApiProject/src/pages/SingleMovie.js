@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../context';
-
+import Error from './Error';
 const SingleMovie = () => {
    
     const { id } = useParams()
     const [singleMovie,setSingleMovie] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [errPage,seterrPage] = useState(false);
     const api = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_ACCESS_KEY}&i=${id}`
     // Title,Year,Relased,Runtime,Writer,Plot
     const fetchSingleMovie = async (api)=>{
+       
         setLoading(true);
         const data = await fetch(api);
         const response = await data.json();
         setSingleMovie(response);
         setLoading(false);
-        console.log(response);
+        
     }
 
     useEffect(() => {
@@ -29,6 +30,9 @@ const SingleMovie = () => {
         return   <div className="loading"></div>
     }
 
+    // if (errPage) {
+    //    return <Error/>
+    // }
 
     return (
         <div className="single-movie-container">
