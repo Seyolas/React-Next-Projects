@@ -8,15 +8,15 @@ import './css/iphone.css'
 
 import App from './App'
 import { AppProvider } from './context'
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <Router>
+      
       <App/> 
-      </Router> 
+     
     </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -4,7 +4,8 @@ import Questions from './Questions';
 const App = () => {
   
   const {number,setNumber,DifficultyValues,CategoryValues,
-    handleChange,handleChangeTwo,handleClick,loading,setLoading,result} = useGlobalContext();
+    handleChange,handleChangeTwo,handleClick,loading,setLoading,result,
+  myError,setmyError} = useGlobalContext();
 
 
     if (loading) {
@@ -14,7 +15,8 @@ const App = () => {
    if (result.length!==0) {
      return <Questions/>
    }
-  return (
+
+   return (
     <>
      <section className="cart">
        <article className="flex-area">
@@ -42,6 +44,7 @@ const App = () => {
           })}
           </select>
         </div>
+        <p className='error-show'>{myError && "Can't Generate Questions, Please Try Different Options" }</p>
         <button onClick={handleClick} className='start-btn'>Start</button>
        </article>
      </section>

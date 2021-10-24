@@ -15,7 +15,9 @@ const AppProvider = ({ children }) => {
   const [loading,setLoading] = useState(false);
   const [result,setResult] = useState([]);
   const [index,setIndex] = useState(0);
-
+  const [correct,setCorrect] = useState(0);
+  const [openModal,setopenModal] = useState(false);
+  const [myError,setmyError] = useState(false);
 
    const DifficultyValues = ['easy','medium','hard'];
    const CategoryValues = ['sports','history','politics',];
@@ -34,16 +36,23 @@ const AppProvider = ({ children }) => {
 
    const fetchData = async (url)=>{
     
-     const data = await fetch(url);
-     const response = await data.json();
-    setResult(response.results);
-    
+      try {
+        const data = await fetch(url);
+        const response = await data.json();
+        setResult(response.results);
+      } catch (error) {
+        console.log(error);
+      }
+
+      if (result.length===0) {
+        setmyError(true);
+
+      }
+     
    }
 
    
-  // let sports=21;
-  // let history=23;
-  // let politics=24;
+ 
  
    const handleChange = (e)=>{
     setOption(e.target.value);
@@ -77,7 +86,8 @@ const AppProvider = ({ children }) => {
     optionC,setOptionC,option,
     setOption,DifficultyValues,CategoryValues,
     handleChange,handleChangeTwo,handleClick,number,setNumber,
-    loading,setLoading,result,index,setIndex
+    loading,setLoading,result,index,setIndex,correct,setCorrect,
+    openModal,setopenModal,myError,setmyError
     }}>
     
     
