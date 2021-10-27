@@ -1,9 +1,9 @@
-import Image from 'next/image'
+import styles from '../styles/Home.module.css'
 const Footer = () => {
     return ( 
-        <footer>
-        <p>Created By <a rel='noreferrer' target='_blank' href="https://twitter.com/seyolasd"><strong>Seyolas</strong></a></p>
-      </footer>
+        <footer className={styles.footer}>
+            Copyright Ninja 2021
+        </footer>
 
       );
 }

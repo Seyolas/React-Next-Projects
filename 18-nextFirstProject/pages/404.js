@@ -1,9 +1,19 @@
-import Link from 'next/link'
+import Link from "next/link";
+import { useEffect } from "react";
+import {useRouter} from 'next/router';
+
 const Error = () => {
-    return (
+
+	const router = useRouter();
+	useEffect(() => {
+		setTimeout(() => {
+			router.push('/');
+		}, 3000);
+	}, [])
+    return ( 
         <div id="notfound">
-		<div className="notfound">
-			<div className="notfound-404">
+		<div class="notfound">
+			<div class="notfound-404">
 				<div></div>
 				<h1>404</h1>
 			</div>
@@ -13,7 +23,8 @@ const Error = () => {
 		</div>
 	</div>
 
-    )
-}
 
-export default Error
+     );
+}
+ 
+export default Error;
