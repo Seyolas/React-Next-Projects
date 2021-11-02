@@ -1,0 +1,271 @@
+#section-center{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 100%;
+
+}
+
+#header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+#header h1{
+  letter-spacing: 1px;
+  margin-top: 3rem;
+  border: solid 1px black;
+  padding: 0.5rem 2rem;
+  font-weight: 400;
+  font-size: 35px;
+}
+
+/*********************************HEADER END******************************************/
+
+/* Nav */
+
+#nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link{
+  margin: 1rem 2rem;
+  font-size: larger;
+  text-transform: uppercase;
+}
+.nav-link:hover{
+  color:red;
+}
+/********************************NAVBAR END******************************************/
+
+/* Welcome */
+
+
+.welcome-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:2rem auto;
+
+}
+
+.welcome-section .left img{
+  width: 844px;
+  height: 424px;
+}
+/* right */
+.welcome-section .right{
+  background-color: #FEF2F2;
+  width: fit-content;
+  height: 423px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-section .right p{
+  font-size: 20px;
+  color:#991B1B;
+  margin-bottom: 2rem;
+  font-size: 25px;
+}
+.welcome-section .right button {
+  padding: 1rem 2rem;
+  background-color: #B91C1C;
+  color:white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0.5rem 7rem;
+  opacity: 0.8;
+  font-size: 15px;
+  border:none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: all .2s ease-in-out;;
+  cursor: pointer;
+}
+
+.welcome-section .right button:hover {
+  transform: scale(1.1);
+  transition: all .2s ;
+}
+
+/********************************WELCOME END******************************************/
+
+/* VACATION VIDEOS */
+.intro-section{
+  width: 80vw;
+  margin: 4rem auto;
+  display: flex;
+}
+
+.intro-left h3{
+  color:#B91C1C;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  font-weight: 100;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.intro-right{
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+.intro-right ul{
+  list-style-type:disc;
+  margin-left: 2rem;
+}
+.intro-right p, li{
+  font-size: 25px;
+  font-weight: 100;
+  letter-spacing: 0;
+}
+.intro-right p{
+  margin-bottom: 1rem;
+ 
+}
+
+/********************************VACATION VIDEOS END******************************************/
+
+/* Carts */
+
+.videos-h3{
+  color:#B91C1C;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 8rem;
+  letter-spacing: 2px;
+}
+.carts-center{
+  display: flex;
+  width: 100vw;
+  margin: 1rem auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart{
+  background-color:#FEE2E2;
+  margin:2rem;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: flex-start;
+ width: 378px;
+ height:600px;
+}
+
+.cart img{
+  height: 378px;
+}
+.cart h3{
+  font-size: 25px;
+}
+
+.cart p {
+  font-size: 20px;
+  padding: 0.2rem;
+}
+.cart p, h3{
+  text-align: center;
+  letter-spacing: 0;
+  margin: 0.5rem;
+  
+}
+
+
+
+/************************************SLIDE******************************************/
+.recent-h3{
+  color:#B91C1C;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 8rem;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+}
+.slide{
+  width: 70vw;
+   margin: 0 auto;
+  max-width: 100%;
+  /* background-color: #FEE2E2; */
+  
+}
+
+.slide img {
+  width: 70vw;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 3px;
+} 
+/************************************SLIDE******************************************/
+
+/* FOOTER */
+
+footer {
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 55%;
+}
+footer h3{
+  color:#B91C1C;
+  letter-spacing: 2px;
+}
+footer input{
+  width: 50vw;
+  margin: 1.3rem 0;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 15px;
+  letter-spacing: 1px;
+  
+}
+
+footer .red-border{
+  border: solid 1px red;
+}
+footer textarea{
+  resize: vertical;
+  width: 50vw;
+  height: 200px;
+  padding: 0.5rem 1rem;
+  font-size: 15px;
+  letter-spacing: 1px;
+
+
+}
+footer .bb{
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+
+}
+footer button{
+  padding: 1rem 2rem;
+  background-color: #B91C1C;
+  color:white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0.5rem 0;
+  opacity: 0.8;
+  font-size: 15px;
+  border:none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: all .2s ease-in-out;;
+  cursor: pointer;
+}
+footer button:hover{
+  transform: scale(1.1);
+  transition: all .2s ;
+}
