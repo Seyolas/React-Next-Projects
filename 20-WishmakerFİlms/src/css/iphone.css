@@ -1,0 +1,28 @@
+@media  screen and (max-width: 360px) {
+
+    .welcome-section .right a {
+        padding: 0.5rem 1rem;
+        margin: 0.5rem auto;
+        width: fit-content;
+      }
+
+
+.slide{
+  width: 70vw;
+   margin: 0 auto;
+  max-width: 100%;
+ height: max-content;
+  
+}
+
+.slide img {
+  width: 100vw;
+  height: fit-content;
+  object-fit: contain;
+} 
+
+
+
+
+
+}
