@@ -6,28 +6,39 @@ const Footer = () => {
     const [mail,setMail] = useState('');
     const [number,setNumber]=useState('');
     const [msg,setMsg] = useState('');
-    const [alert,setAlert] = useState(false);
+    const [alert,setAlert] = useState({show:false,message:''});
 
     const handleSubmit = (e)=>{
-      name === '' ? setAlert(true) : setAlert(false);
-      mail === '' ? setAlert(true) : setAlert(false);
-      number === '' ? setAlert(true) : setAlert(false);
-      msg === '' ? setAlert(true) : setAlert(false);
-
-
+    
+        if (name==='' || mail==='' || number==='' || msg==='') {
+            setAlert({show:true,message:'Please fill all areas'})
+        }
+        else{
+            setAlert({show:false,msg:''})
+        }
         e.preventDefault();
     }
     return (
         <footer>
             <form onSubmit={handleSubmit}>
             <h3>CONTACT US</h3>
-            {alert && <p>Please Fill Missing Inputs</p>}
-            <div><input className={alert ? 'red-border' : null} value={name} onChange={(e)=>setName(e.target.value)} placeholder='Name' type="text" /></div>
-            <div><input className={alert ? 'red-border' : null} value={mail} onChange={(e)=>setMail(e.target.value)} placeholder='Email' type="email" /></div>
-            <div><input className={alert ? 'red-border' : null} value={number} onChange={(e)=>setNumber(e.target.value)} placeholder='Phone' type='number' /></div> 
-            <div> <textarea className={alert ? 'red-border' : null} value={msg} onChange={(e)=>setMsg(e.target.value)} placeholder='Your Message' cols="num" rows="num"></textarea></div>  
+            <p className='alert-p'>{alert && alert.message}</p>
+            <div><input  value={name} onChange={(e)=>setName(e.target.value)} placeholder='Name' type="text" /></div>
+            <div><input value={mail} onChange={(e)=>setMail(e.target.value)} placeholder='Email' type="email" /></div>
+            <div><input value={number} onChange={(e)=>setNumber(e.target.value)} placeholder='Phone' type='number' /></div> 
+            <div> <textarea value={msg} onChange={(e)=>setMsg(e.target.value)} placeholder='Your Message' cols="num" rows="num"></textarea></div> 
             <div className='bb'><button type='submit'>SEND</button></div> 
             </form>
+
+            <div id='footer-alt'>
+                <h2>We'd love to hear from you!</h2>
+                <p>Have a question? Send us the details on the type of project you're looking to hire for, and we'll be happy to get back to you with a free quote and information.</p>
+                <h2>Call Wishmaker Films at</h2>
+                <p>(+9)05533411643</p>
+
+                <div>Created By <a target='_blank' href="https://twitter.com/seyolasd"><strong>Seyolas</strong></a></div>
+              
+            </div>
         </footer>
     )
 }

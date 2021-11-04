@@ -17,7 +17,7 @@
   letter-spacing: 1px;
   margin-top: 3rem;
   border: solid 1px black;
-  padding: 0.5rem 2rem;
+  padding: 0.2rem 1rem;
   font-weight: 400;
   font-size: 35px;
 }
@@ -36,6 +36,12 @@
   margin: 1rem 2rem;
   font-size: larger;
   text-transform: uppercase;
+}
+.nav-link-current{
+  margin: 1rem 2rem;
+  font-size: larger;
+  text-transform: uppercase;
+    border-bottom: 1px solid black;
 }
 .nav-link:hover{
   color:red;
@@ -74,7 +80,7 @@
   margin-bottom: 2rem;
   font-size: 25px;
 }
-.welcome-section .right button {
+.welcome-section .right a {
   padding: 1rem 2rem;
   background-color: #B91C1C;
   color:white;
@@ -89,7 +95,7 @@
   cursor: pointer;
 }
 
-.welcome-section .right button:hover {
+.welcome-section .right a:hover {
   transform: scale(1.1);
   transition: all .2s ;
 }
@@ -110,6 +116,10 @@
   font-weight: 100;
   display: flex;
   justify-content: flex-start;
+}
+
+.intro-left iframe{
+  border-radius: 20px;
 }
 
 .intro-right{
@@ -135,6 +145,7 @@
 /* Carts */
 
 .videos-h3{
+  font-weight: 100;
   color:#B91C1C;
   display: flex;
   justify-content: flex-start;
@@ -183,6 +194,7 @@
 
 /************************************SLIDE******************************************/
 .recent-h3{
+  font-weight: 100;
   color:#B91C1C;
   display: flex;
   justify-content: flex-start;
@@ -231,9 +243,6 @@ footer input{
   
 }
 
-footer .red-border{
-  border: solid 1px red;
-}
 footer textarea{
   resize: vertical;
   width: 50vw;
@@ -268,4 +277,77 @@ footer button{
 footer button:hover{
   transform: scale(1.1);
   transition: all .2s ;
+}
+
+footer .red-border{
+  border: solid 1px red;
+}
+
+footer .alert-p{
+  color:red;
+}
+
+
+/************************************FOOTER END******************************************/
+/* Footer Alt */
+
+#footer-alt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-top: 2rem;
+  text-align: center;
+}
+#footer-alt p{
+  font-size: 20px;
+  letter-spacing: 0;
+  margin: 1rem 0;
+}
+/****************************************footeraltEnd***************************************/
+
+/* Videos */
+hr {
+  border-top: 1px solid #E5E7EB; 
+  width: 80vw;
+  margin: 1rem auto;
+}
+.section-videos-center{
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 100%;
+
+}
+.single-video{
+  margin: 3rem 0;
+  display: flex;
+  
+}
+.single-video iframe{
+  border-radius: 20px;
+}
+.section-videos-center h3{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+  color:#B91C1C;
+  letter-spacing: 1px;
+
+}
+
+.single-video-right{
+  position: relative;
+  left: 100px;
+  top: 100px;
+}
+
+.created-by{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 }

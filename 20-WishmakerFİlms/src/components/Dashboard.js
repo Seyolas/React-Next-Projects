@@ -4,7 +4,7 @@ import Footer from './Footer'
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from './context';
 import { HiArrowCircleRight } from "react-icons/hi";
-
+import Navbar from './Navbar';
 
 const Dashboard = () => {
     const {card} = useGlobalContext();
@@ -13,15 +13,8 @@ const Dashboard = () => {
 
     return (
         <>
-            <header id='header'>
-             <Link><h1>Wishmaker Films</h1></Link>  
-            </header>
-
-            <nav id='nav'>
-            <Link className='nav-link' to='/'>Home</Link>
-            <Link className='nav-link' to='/'>Videos</Link>
-            </nav>
-
+          <Navbar/>
+           
             {/* Welcome Intro */}
             <section className="welcome-section">
                 <div className='left'>
@@ -29,7 +22,7 @@ const Dashboard = () => {
                 </div>
                 <div className="right">
                     <p>WELCOME</p>
-                    <button type='button'>BOOK NOW</button>
+                    <a href='#footer-alt'>BOOK NOW</a>
                 </div>
             </section>
 

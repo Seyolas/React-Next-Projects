@@ -31,11 +31,41 @@ const AppProvider = ({ children }) => {
 
    
   ]
-   
+  
+  const videos = [
+    {
+      id:1,
+      title:'MAGIC KINGDOM SAMPLE',
+      video_src:"https://www.youtube.com/embed/tJG2nF8M6uk",
+      detail:"Magic Kingdom with Stephanie's family"
+    },
+    {
+      id:2,
+      title:'VILLIANS PARTY SAMPLE',
+      video_src:'https://www.youtube.com/embed/PNwr2cjkBdw',
+      detail:"Disney Villian's Party"
+
+    },
+    {
+      id:3,
+      title:'HOLLYWOOD STUDIOS SAMPLE',
+      video_src:'https://www.youtube.com/embed/Kr_rLbLXeu4',
+      detail:"Hollywood Studios with Stephanie's family"
+
+    },
+    {
+      id:4,
+      title:'ANIMAL KINGDOM AND MORE',
+      video_src:'https://www.youtube.com/embed/FDZgR0IhDnU',
+      detail:"Alfonso and Family"
+
+    }
+
+  ]
   const [card,setCard] = useState(cards);
 
 
-  return <AppContext.Provider value={{card}}>{children}</AppContext.Provider>
+  return <AppContext.Provider value={{card,videos}}>{children}</AppContext.Provider>
 
 }
 // make sure use
