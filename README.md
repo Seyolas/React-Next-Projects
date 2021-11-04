@@ -6,6 +6,8 @@
 
 #### QuizGame -> https://epic-hopper-766590.netlify.app/
 
+#### WishMaker -> https://gallant-sammet-244b10.netlify.app/
+
 <hr/>
 
 # Next.js Projects
