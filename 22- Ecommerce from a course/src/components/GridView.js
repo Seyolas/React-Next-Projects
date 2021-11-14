@@ -2,8 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import Product from './Product'
 
-const GridView = () => {
-  return <h4>Grid View</h4>
+const GridView = ({products}) => {
+  return (
+  <Wrapper>
+    <div className="products-container">
+      {products.map((i)=>{
+        return <Product key={i.id} {...i} />
+      })}
+    </div>
+  </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
