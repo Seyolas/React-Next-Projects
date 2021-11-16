@@ -1,10 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './components'
-import {Home,Products,SingleProduct,About,Cart,Error,Checkout,PrivateRoute} from './pages/index'
+import {Home,Products,SingleProduct,About,Cart,Error,Checkout,PrivateRoute,AuthWrapper} from './pages/index'
 
 function App() {
   return (
+    <AuthWrapper>
   <Router>
     <Navbar/>
     <Sidebar/>
@@ -14,12 +15,12 @@ function App() {
     <Route exact path='/cart'><Cart/></Route>
     <Route exact path='/products'><Products/></Route>
     <Route exact path='/products/:id'><SingleProduct/></Route>
-    <Route exact path='/checkout'><Checkout/></Route>
+    <PrivateRoute exact path='/checkout'><Checkout/></PrivateRoute>
     <Route exact path='*'><Error/></Route>
     </Switch>
     <Footer/>
   </Router>
-
+  </AuthWrapper>
 
   )
 
