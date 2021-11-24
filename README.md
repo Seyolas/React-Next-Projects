@@ -1,5 +1,5 @@
 # Projects
-<hr/>
+
 #### WishMaker -> https://zen-wozniak-7e3106.netlify.app/
 
 #### MovieDB -> https://relaxed-hugle-326fa8.netlify.app/
