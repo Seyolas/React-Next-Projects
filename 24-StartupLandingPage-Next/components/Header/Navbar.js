@@ -1,8 +1,25 @@
 import Link from 'next/link'
-const Navbar = () => {
-    return (
-    <nav>
+import { useEffect, useState } from 'react'
 
+const Navbar = () => {
+
+    const [shadow,setShadow] = useState(false);
+    useEffect(() => {
+       const onScroll= ()=> {
+        window.scrollY >10 ? setShadow(true) : setShadow(false)
+    
+        }
+        window.addEventListener("scroll", onScroll);
+        return () => {
+            window.removeEventListener("scroll",null);
+          }
+    }, [])
+
+    
+    return (
+    
+    <nav className={shadow ? 'shadow-active':null}>
+      
       <div>
         <ul className='ul-first'>
         <img src="/consolan.svg" alt="" width={100} height={90} />
@@ -32,7 +49,12 @@ const Navbar = () => {
                 justify-content:space-between;
                 align-items:center;
                 padding:0 10%;
+                transition:all 0.7s;
             }
+            .shadow-active{
+                box-shadow: rgba(0, 0, 0, 0.45) 0px 15px 15px -20px;
+            }
+
             .ul-first{
                 display:flex;
                 align-items:center;
