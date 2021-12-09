@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Montserrat:wght@300&family=Mountains+of+Christmas&family=Noto+Serif&family=Open+Sans&family=Oswald:wght@300&family=Playfair+Display&family=Raleway:wght@300&family=Roboto:wght@300&display=swap');
+
+html,
+body{
+  background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  url(https://images.hdqwalls.com/download/cyberpunk-2077-4k-2020-game-jd-1920x1080.jpg)
+  no-repeat center center fixed;
+  font-family: 'Lora', serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Mountains of Christmas', cursive;
+font-family: 'Noto Serif', serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Roboto', sans-serif;
+scroll-behavior: smooth;
+  }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
