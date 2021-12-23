@@ -6,7 +6,7 @@ import { AiOutlineUser} from "react-icons/ai";
 import { FiLogOut, FiAlignJustify } from "react-icons/fi";
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa'
-
+import { useGlobalContext } from './Context';
 const Navbar = () => {
     const { user, error, isLoading } = useUser();
     
@@ -14,6 +14,8 @@ const Navbar = () => {
     const [search,setSearch] = useState();
     const [results,setResults] = useState();
     
+    const {fav} = useGlobalContext();
+
     const openSideMenu = ()=>{
         setSidebar(true);
     }
@@ -54,7 +56,7 @@ const Navbar = () => {
             <ul className='general-ul'>
             <input type="search" onChange={(e)=>handleSearch(e)} value={search} placeholder="Search"/>
                 <ul className='small-ul'>
-                <li><BsFillSuitHeartFill/><span>3</span></li>
+                <li><BsFillSuitHeartFill/><span>{fav}</span></li>
                     <li><BiCart/><span>3</span></li> 
                 </ul>
               
