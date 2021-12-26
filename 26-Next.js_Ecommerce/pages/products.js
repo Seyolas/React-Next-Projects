@@ -1,7 +1,6 @@
 
 import Axios from "axios";
-import { useEffect, useState } from "react";
-import Stars from "../components/Stars";
+import {  useEffect, useState } from "react";
 import Link from 'next/link';
 
 export const getStaticProps = async ()=>{
@@ -19,14 +18,15 @@ export const getStaticProps = async ()=>{
 const products = ({data}) => {
     
     const [products,setProducts] = useState(data);
-    const [categories,setCategories] = useState([]);
     const [price,setPrice] = useState(900.00);
     const [sort,setSort] = useState();
     const prices = products.map((i)=>i.price);
     const max_price = Math.max(...prices);
     const min_price = Math.min(...prices);
 
-
+    useEffect(() => {
+        console.log('aaaa');
+      }, [])
     // Filter categories and fix men,woman sentences
    let newCategories = data.map((i)=>i.category);
    newCategories = Array.from(new Set(['All',...newCategories]));

@@ -30,14 +30,18 @@ export const getStaticProps = async (context)=>{
 
 
 const singleproduct = ({product}) => {
+
+   
+
     const {id,title,price,description,category,image,rating:{rate,count}} = product;
     const notify = () => toast('Succesfuly added to favourities');
 
-     const {fav,setFav} = useGlobalContext();
-     console.log(fav);   
-    const handleClick = (e)=>{
+     const {fav,setFav,setFavitems} = useGlobalContext();
 
-        return setFav((current)=>current+1)
+    const handleClick = (e)=>{
+        e.preventDefault();  
+        let item = {id,image,title,price,description};
+        setFavitems(prevState=> [...prevState,item])
         
     }
     return (
@@ -53,8 +57,9 @@ const singleproduct = ({product}) => {
              <p className="description">{description}</p>
              
              <div className="button-container">
-                <button type="button" className="buy">Buy</button>
-                <button type="button"  title='Add to favourities' onClick={(e) => { notify(); handleClick(e)}} className="favourite"><BsFillSuitHeartFill/></button>
+                <button type="button" className="css-button-3d--blue">Buy</button>
+                
+                <button type="button"  title='Add to favourities' onClick={(e,id,image,title,price,description) => { notify(); handleClick(e,id,image,title,price,description)}} className="favourite"><BsFillSuitHeartFill/></button>
                 <Toaster
                 toastOptions={{
                     className: '',
@@ -73,6 +78,31 @@ const singleproduct = ({product}) => {
 
             <style jsx>{`
 
+            .css-button-3d--blue {
+                min-width: 230px;
+                height: 40px;
+                color: #fff;
+                padding: 5px 10px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: relative;
+                display: inline-block;
+                outline: none;
+                border-radius: 5px;
+                border: none;
+                background: #fbbf24;
+                box-shadow: 0 5px #f59e0b;
+                }
+                .css-button-3d--blue:hover {
+                box-shadow: 0 3px #f59e0b;
+                top: 1px;
+                }
+                .css-button-3d--blue:active {
+                box-shadow: 0 0 #f59e0b;
+                top: 5px;
+                }
+
                 .container{
                     display:flex;
                     width:80vw;
@@ -83,6 +113,7 @@ const singleproduct = ({product}) => {
                 }
                 .right{
                     letter-spacing:1px;
+                    width:40vw;
 
                 }
                 .title{
@@ -93,18 +124,8 @@ const singleproduct = ({product}) => {
                     font-weight:bold;
                     font-size:1.4rem;
                 }
-                .buy{
-                    width:20vw;
-                    border:none;
-                    outline:none;
-                    cursor:pointer;
-                    padding:0.5rem 0.3rem;
-                    font-size:1rem;
-                    background-color:#fbbf24;
-                }
-                .buy:hover{
-                    border:solid 1px black;
-                }
+              
+                
                 .favourite{
                     background-color:#fff;
                     padding:0.5rem 0.3rem;

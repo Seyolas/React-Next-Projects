@@ -4,17 +4,19 @@ import { BiCart} from "react-icons/bi";
 import { BsFillSuitHeartFill} from "react-icons/bs";
 import { AiOutlineUser} from "react-icons/ai";
 import { FiLogOut, FiAlignJustify } from "react-icons/fi";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa'
 import { useGlobalContext } from './Context';
+import React from 'react';
 const Navbar = () => {
+
     const { user, error, isLoading } = useUser();
     
     const [sidebar,setSidebar] = useState(false);
     const [search,setSearch] = useState();
     const [results,setResults] = useState();
     
-    const {fav} = useGlobalContext();
+    const {fav,favItems,favCount} = useGlobalContext();
 
     const openSideMenu = ()=>{
         setSidebar(true);
@@ -30,7 +32,6 @@ const Navbar = () => {
         setSearch(e.target.value);
         }
         
-        console.log(search);
     }
 
     return (
@@ -56,7 +57,8 @@ const Navbar = () => {
             <ul className='general-ul'>
             <input type="search" onChange={(e)=>handleSearch(e)} value={search} placeholder="Search"/>
                 <ul className='small-ul'>
-                <li><BsFillSuitHeartFill/><span>{fav}</span></li>
+
+              <Link href="/favourites"><a><li><BsFillSuitHeartFill/><span>{favCount}</span></li></a></Link> 
                     <li><BiCart/><span>3</span></li> 
                 </ul>
               
