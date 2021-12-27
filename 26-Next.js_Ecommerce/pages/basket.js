@@ -1,30 +1,38 @@
-import { useGlobalContext } from "../components/Context";
+import { useGlobalContext } from "../components/Context"
 import Link from "next/link";
 import { AiFillDelete } from "react-icons/ai";
+import { formatPrice } from "../components/utils/helpers";
+const basket = () => {
 
-
-const favourites = () => {
-
-    const {favItems,uniqueFavItems,removeFavItem} = useGlobalContext();
-
-    if (favItems.length!=0) {
+    const {basketItems,uniqueBasketItems,removeBasketItem} = useGlobalContext();
+   
+    if (basketItems.length!=0) {
         return (
             <div>
-                {uniqueFavItems.map((i)=>{
+                {uniqueBasketItems.map((i)=>{
                     const {id,image,title,price,description} = i;
                     return(
-                     <div key={id}>
+                     <div className="container" key={id}>
                         <img width={70} src={image} alt={title} />
-                        <p>{price}</p>
+                        <p>{formatPrice(price)}</p>
                         <p>{description}</p>
-                        <button className="remove-btn" onClick={()=>removeFavItem(id)} 
+                        <button className="remove-btn" onClick={()=>removeBasketItem(id)} 
                         type="button"><AiFillDelete/></button>
                     </div>  
                     )
                 })}
-                <Link href='/products'><a className="css-button-3d--blue">Products</a></Link>
+                <Link href='/products'><a className="css-button-3d--blue">Continue Shopping</a></Link>
+                <Link href='/'><a className="css-button-3d--blue">Proceed to checkout</a></Link>
 
                 <style jsx>{`
+
+                    .container{
+                        width:30vw;
+                        text-align:center;
+                        margin:2rem auto;
+                        display:flex;
+                    }
+
                     .remove-btn{
                         background-color:#fff;
                         font-size:15px;
@@ -70,7 +78,9 @@ const favourites = () => {
             </div>
         )
     }
-    return <div>You dont have any favourite product kekw <Link href='/products'><a>Go products</a></Link></div>
+
+    return <div>You dont have any product in your basket KEKW <Link href='/products'><a>Go products</a></Link></div>
+
 }
 
-export default favourites
+export default basket

@@ -2,6 +2,7 @@
 import Axios from "axios";
 import {  useEffect, useState } from "react";
 import Link from 'next/link';
+import { formatPrice } from "../components/utils/helpers";
 
 export const getStaticProps = async ()=>{
     try {
@@ -24,9 +25,7 @@ const products = ({data}) => {
     const max_price = Math.max(...prices);
     const min_price = Math.min(...prices);
 
-    useEffect(() => {
-        console.log('aaaa');
-      }, [])
+  
     // Filter categories and fix men,woman sentences
    let newCategories = data.map((i)=>i.category);
    newCategories = Array.from(new Set(['All',...newCategories]));
@@ -149,7 +148,7 @@ const products = ({data}) => {
                 <Link key={index}  href={`/product/${id}`}><a className="item">
                 <img className="product-image" src={image} alt="" />
                 <p className="title">{title}</p>
-                <p className="price">$ {price}</p>
+                <p className="price">{formatPrice(price)}</p>
                 </a>
                 </Link>
               

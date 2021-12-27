@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { useUser } from '@auth0/nextjs-auth0'
 import { BiCart} from "react-icons/bi";
 import { BsFillSuitHeartFill} from "react-icons/bs";
 import { AiOutlineUser} from "react-icons/ai";
@@ -8,15 +7,17 @@ import { useState, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa'
 import { useGlobalContext } from './Context';
 import React from 'react';
-const Navbar = () => {
+import toast, { Toaster } from 'react-hot-toast';
 
-    const { user, error, isLoading } = useUser();
+const Navbar = () => {
+    const notify = () => toast('You need to login');
+
     
     const [sidebar,setSidebar] = useState(false);
     const [search,setSearch] = useState();
     const [results,setResults] = useState();
     
-    const {fav,favItems,favCount} = useGlobalContext();
+    const {user, error, isLoading,fav,favItems,favCount,basketCount,setBasket} = useGlobalContext();
 
     const openSideMenu = ()=>{
         setSidebar(true);
@@ -57,9 +58,11 @@ const Navbar = () => {
             <ul className='general-ul'>
             <input type="search" onChange={(e)=>handleSearch(e)} value={search} placeholder="Search"/>
                 <ul className='small-ul'>
-
-              <Link href="/favourites"><a><li><BsFillSuitHeartFill/><span>{favCount}</span></li></a></Link> 
-                    <li><BiCart/><span>3</span></li> 
+               
+              <Link href={`${user ? '/favourites':'/api/auth/login'} `}>
+                  <a><li><BsFillSuitHeartFill/>
+                  <span>{favCount === 0 ? '':favCount}</span></li></a></Link> 
+                <Link href={`${user ? '/basket':'/api/auth/login'} `}><a><li><BiCart/><span>{basketCount === 0 ? '' : basketCount}</span></li></a></Link>  
                 </ul>
               
             </ul>

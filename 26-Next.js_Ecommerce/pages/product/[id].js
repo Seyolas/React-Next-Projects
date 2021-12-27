@@ -3,7 +3,8 @@ import { BsFillSuitHeartFill} from "react-icons/bs";
 import toast, { Toaster } from 'react-hot-toast';
 import { useState } from "react";
 import { useGlobalContext } from "../../components/Context";
-
+import Link from "next/link";
+import {useRouter} from "next/router"
 export const getStaticPaths = async ()=>{
     const response = await fetch('https://fakestoreapi.com/products');
     const data = await response.json();
@@ -30,20 +31,40 @@ export const getStaticProps = async (context)=>{
 
 
 const singleproduct = ({product}) => {
-
-   
+    const router = useRouter();
 
     const {id,title,price,description,category,image,rating:{rate,count}} = product;
-    const notify = () => toast('Succesfuly added to favourities');
 
-     const {fav,setFav,setFavitems} = useGlobalContext();
+    const notify = () => toast('Succesfuly added to favourites');
+    const notifybasket = ()=>toast('Succesfully added to the basket');
 
-    const handleClick = (e)=>{
+     const {user, error, isLoading,fav,setFav,setFavitems,setBasketItems} = useGlobalContext();
+
+    const AddFavourities = (e)=>{
         e.preventDefault();  
-        let item = {id,image,title,price,description};
-        setFavitems(prevState=> [...prevState,item])
-        
+        if (user) {
+            notify();
+            let item = {id,image,title,price,description};
+            setFavitems(prevState=> [...prevState,item])    
+        }
+        else {
+            router.push('/api/auth/login')
+        }
+       
     }
+
+    const AddBasket = (e)=>{
+        e.preventDefault();  
+        if (user) {
+            notifybasket();
+            let item = {id,image,title,price,description};
+            setBasketItems(prevState=> [...prevState,item])    
+        }
+        else {
+            router.push('/api/auth/login')
+        }
+    }
+   
     return (
         <div className="container" key={id}>
             <div className="left">
@@ -57,9 +78,15 @@ const singleproduct = ({product}) => {
              <p className="description">{description}</p>
              
              <div className="button-container">
-                <button type="button" className="css-button-3d--blue">Buy</button>
-                
-                <button type="button"  title='Add to favourities' onClick={(e,id,image,title,price,description) => { notify(); handleClick(e,id,image,title,price,description)}} className="favourite"><BsFillSuitHeartFill/></button>
+        <button type="button" title='Basket' className="css-button-3d--blue" 
+        onClick={(e,id,image,title,price,description) => 
+        {AddBasket(e,id,image,title,price,description)}}>Add to basket</button>
+
+        <button type="button" title='Add to favourities' className="favourite"
+        onClick={(e,id,image,title,price,description) => 
+        {AddFavourities(e,id,image,title,price,description)}}>
+        <BsFillSuitHeartFill/></button>
+        
                 <Toaster
                 toastOptions={{
                     className: '',
