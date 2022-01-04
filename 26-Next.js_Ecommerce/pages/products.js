@@ -1,8 +1,9 @@
-
+import { useGlobalContext } from "../components/Context";
 import Axios from "axios";
 import {  useEffect, useState } from "react";
 import Link from 'next/link';
 import { formatPrice } from "../components/utils/helpers";
+import { FcInfo } from "react-icons/fc";
 
 export const getStaticProps = async ()=>{
     try {
@@ -17,15 +18,33 @@ export const getStaticProps = async ()=>{
    
 }
 const products = ({data}) => {
-    
+    const {search,setSearch} = useGlobalContext();
+    const [notfound,setNotFound] = useState(false);
     const [products,setProducts] = useState(data);
     const [price,setPrice] = useState(900.00);
-    const [sort,setSort] = useState();
-    const prices = products.map((i)=>i.price);
-    const max_price = Math.max(...prices);
-    const min_price = Math.min(...prices);
+    const prices = data.map((i)=>i.price);
+    let min_price = Math.min(...prices);
 
-  
+    useEffect(() => {
+        if (search) {
+            
+            let search_products = data.filter((i)=>i.title.toLowerCase().includes(search));
+            if (search_products.length===0) {
+                setNotFound(true);
+            }
+            else{
+                setNotFound(false);
+            }
+           setProducts(search_products);
+        }
+
+        else {
+            setProducts(data);
+        }
+
+       
+    }, [search])
+
     // Filter categories and fix men,woman sentences
    let newCategories = data.map((i)=>i.category);
    newCategories = Array.from(new Set(['All',...newCategories]));
@@ -40,12 +59,16 @@ const products = ({data}) => {
         newCategories[indexWoman] = 'women';
     }
 
+
     const updatePrice = (e)=>{
-       
+        
+
+       e.preventDefault();
         let value = e.target.value;
         setPrice(value);
-        let filtered_price = data.filter((i)=>i.price<price);
-        setProducts(filtered_price)
+        let filtered_price = data.filter((i)=>i.price<=value);
+       setProducts(filtered_price)
+        // console.log(filtered_price);
 
         
     }
@@ -79,7 +102,7 @@ const products = ({data}) => {
 
     }
     const updateCategory = (e)=>{
-
+        
       
         let value = e.target.textContent;
 
@@ -109,6 +132,8 @@ const products = ({data}) => {
 
     }
 
+   
+
     return (
         <section>
             <div>
@@ -125,7 +150,7 @@ const products = ({data}) => {
             <p>Price</p>
             <p>$ {price}</p>
         <input type="range" name='price' value={price} 
-        onChange={updatePrice} min={min_price} max={max_price} />
+        onChange={updatePrice} min={min_price} max={1001}  />
         </aside>
         </div>
 
@@ -141,6 +166,7 @@ const products = ({data}) => {
             </select>
         </form>
 
+        {notfound && <p className="search-error"><FcInfo/>There is no result</p>}
         <main className="products">
         {products.map((i,index)=>{
             const {id,title,price,image} = i;
@@ -249,7 +275,41 @@ const products = ({data}) => {
                 font-weight:bold;
             }
 
-            
+            .search-error{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                justify-content:center;
+                align-self:center;
+                margin:auto;
+                font-size:2rem;
+                width:60vw;
+                color:#94a3b8;
+
+            }
+
+            @media screen and (max-width:500px){
+                .aside-category {
+                display:none;
+            }
+
+            .aside-price{
+                display:none;
+            }
+
+            .products{
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            }
+            @media screen and (max-width:377px){
+
+                .products{
+                grid-template-columns: repeat(1,1fr);
+                }
+
+            }
+
             `}
 
         </style>

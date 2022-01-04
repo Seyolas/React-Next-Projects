@@ -1,10 +1,11 @@
 import Stars from "../../components/Stars";
 import { BsFillSuitHeartFill} from "react-icons/bs";
 import toast, { Toaster } from 'react-hot-toast';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../components/Context";
 import Link from "next/link";
 import {useRouter} from "next/router"
+
 export const getStaticPaths = async ()=>{
     const response = await fetch('https://fakestoreapi.com/products');
     const data = await response.json();
@@ -31,14 +32,29 @@ export const getStaticProps = async (context)=>{
 
 
 const singleproduct = ({product}) => {
+
+    const [fakeAdet,setFakeAdet] = useState(1);
+    const [info,setInfo] = useState(false);
+
+    const {user, error, isLoading,setFavitems,setBasketItems} = useGlobalContext();
+
+    let newProduct = {...product,quantity:fakeAdet}
+    const {id,title,price,description,category,image,rating:{rate,count},quantity} = newProduct;
+    
     const router = useRouter();
 
-    const {id,title,price,description,category,image,rating:{rate,count}} = product;
+
+    const updateAdet = (e)=>{
+        let x = e.target.value;
+        setFakeAdet(Number(x));
+
+      }
+      
+     
 
     const notify = () => toast('Succesfuly added to favourites');
     const notifybasket = ()=>toast('Succesfully added to the basket');
 
-     const {user, error, isLoading,fav,setFav,setFavitems,setBasketItems} = useGlobalContext();
 
     const AddFavourities = (e)=>{
         e.preventDefault();  
@@ -57,7 +73,7 @@ const singleproduct = ({product}) => {
         e.preventDefault();  
         if (user) {
             notifybasket();
-            let item = {id,image,title,price,description};
+            let item = {id,image,title,price,description,quantity};
             setBasketItems(prevState=> [...prevState,item])    
         }
         else {
@@ -79,15 +95,28 @@ const singleproduct = ({product}) => {
              
              <div className="button-container">
         <button type="button" title='Basket' className="css-button-3d--blue" 
-        onClick={(e,id,image,title,price,description) => 
-        {AddBasket(e,id,image,title,price,description)}}>Add to basket</button>
+        onClick={(e,id,image,title,price,description,quantity) => 
+        {AddBasket(e,id,image,title,price,description,quantity)}}>Add to basket</button>
 
         <button type="button" title='Add to favourities' className="favourite"
         onClick={(e,id,image,title,price,description) => 
         {AddFavourities(e,id,image,title,price,description)}}>
         <BsFillSuitHeartFill/></button>
         
-                <Toaster
+      <select className="select" value={fakeAdet} onChange={(e)=>updateAdet(e)}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+
+                </select>
+               <Toaster
                 toastOptions={{
                     className: '',
                     style: {
@@ -98,9 +127,8 @@ const singleproduct = ({product}) => {
                     },
                 }}
                 />
-                <p>Share it with : a b c</p>
              </div>
-
+            
            </div>
 
             <style jsx>{`
@@ -134,6 +162,21 @@ const singleproduct = ({product}) => {
                     display:flex;
                     width:80vw;
                     margin:4rem auto;
+                    height:70vh;
+
+                }
+                .button-container{
+                    margin:1rem 0;
+                    display:flex;
+                    align-items:center;
+                    
+                }
+                .select{
+                    margin-left:1rem;
+                    height: 40px;
+                     padding: 5px 10px;
+                    margin-left:2rem;
+                    font-weight:700;
                 }
                 .left{
                     margin-right:4rem;                    
@@ -155,9 +198,11 @@ const singleproduct = ({product}) => {
                 
                 .favourite{
                     background-color:#fff;
-                    padding:0.5rem 0.3rem;
+                     height: 40px;
+                     padding: 5px 10px;
                     margin-left:2rem;
-                    cursor:pointer;                    
+                    cursor:pointer;     
+                    border:solid 1px #eaeaea;               
                 }
 
                 img{
@@ -165,6 +210,47 @@ const singleproduct = ({product}) => {
                     object-fit:contain;
 
                 }
+
+                @media screen and (max-width:900px){
+                    .container{
+                    height:fit-content;
+                }
+                
+                }
+                @media screen and (max-width:500px){
+
+                    .container{
+                    display:flex;
+                    flex-direction:column;
+                    align-items:center;
+                    justify-content:center;
+                    width:100vw;
+                    margin:4rem auto;
+                    
+                }
+                .left{
+                    margin-right:0;      
+                }
+                .right{
+                    letter-spacing:1px;
+                    width:80vw;
+
+                }
+              
+                
+                .favourite{
+                    background-color:#fff;
+                    padding:0.5rem 0.3rem;
+                    margin-left:1rem;
+                    cursor:pointer;                    
+                }
+
+                img{
+                    width:150px;
+                    object-fit:contain;
+                }
+
+            }
                 
                 
                 `}

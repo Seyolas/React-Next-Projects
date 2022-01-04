@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 const Navmenu = () => {
     return (
-        <header>
-                <Link href='/'><a>Women</a></Link>
-                <Link href='/'><a>Men</a></Link>
-                <Link href='/'><a>Jewelery</a></Link>
-                <Link href='/'><a>Electronics</a></Link>
+        <header className='nav-menu'>
+                <Link href='#women-section'><a>Women</a></Link>
+                <Link href='#men-section'><a>Men</a></Link>
+                <Link href='#jewelery-section'><a>Jewelery</a></Link>
+                <Link href='#electronics-section'><a>Electronics</a></Link>
 
 
 
@@ -24,6 +24,14 @@ const Navmenu = () => {
                     color:black;
                     letter-spacing:1px;
                 }
+
+                @media screen and (max-width:768px){
+                    .nav-menu{
+                        display:none;
+                    }
+                }
+
+
                     `}
 
                 </style>

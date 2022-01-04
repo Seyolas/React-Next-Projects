@@ -7,7 +7,7 @@ const Header1 = () => {
       <div className="left">
         <h1>Best ecommerce website ever</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Modi rem, non enim incidunt necessitatibus doloremque id totam quisquam dolore nobis?</p>
+          Modi rem non enim incidunt necessitatibus doloremque id totam quisquam dolore nobis?</p>
           <Link href='/products'><a className='btn'>Discover More</a></Link>
       </div>
       
@@ -28,6 +28,7 @@ const Header1 = () => {
         display:flex;
         flex-direction:column;
         margin-top:2rem;
+        margin-right:2rem;
       }
       .left p{
         line-height:30px;
@@ -41,11 +42,31 @@ const Header1 = () => {
         border-radius:10px;
       }
       img{
-        width:500px;
-        height:600px;
-        object-fit:cover;
-        border-radius:10px;
+        width:40vw;
+        height:35vw;
+        object-fit:contain;
+        border-radius:6px;
       }
+
+      @media screen and (max-width:768px){
+
+        .left{
+        width:30vw;
+        display:flex;
+        flex-direction:column;
+        margin-top:2rem;
+        margin-right:0;
+      }
+        img{
+        width:60vw;
+        height:50vw;
+        object-fit:contain;
+        border-radius:6px;
+      }
+
+
+      }
+
 
       @media screen and (max-width:500px){
         .container{

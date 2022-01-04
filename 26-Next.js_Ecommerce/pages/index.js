@@ -1,7 +1,30 @@
 import Head from 'next/head'
 import Navmenu from '../components/Navmenu'
 import Header1 from '../components/Header1'
-export default function Home() {
+import Axios from "axios";
+import MostSeller from '../components/MostSeller';
+import Women from '../components/Women';
+import Men from '../components/Men';
+import Jewelery from '../components/Jewelery';
+import Electronics from '../components/Electronics';
+
+export const getStaticProps = async ()=>{
+  try {
+      const res = await Axios.get("https://fakestoreapi.com/products");
+      return {
+         props:{data:res.data}
+      }
+  
+  } catch (error) {
+      return error
+  }
+ 
+}
+  
+const SLIDE_COUNT = 10;
+const slides = Array.from(Array(SLIDE_COUNT).keys());
+
+export default function Home({data}) {
 
 
   return (
@@ -15,10 +38,39 @@ export default function Home() {
 
     <Navmenu/>
     <Header1/>
+    <MostSeller data={data}/>
+    <img className='advertisement' src="https://m.media-amazon.com/images/I/61MkiIMUSvL._SX3000_.jpg" alt="" />
+    <Women  data={data}/>
+    <img className='advertisement' src="https://m.media-amazon.com/images/I/61CX1noQ8nL._SX3000_.jpg" alt="" />
+    <Men data={data}/>
+    <img className='advertisement' src="https://m.media-amazon.com/images/I/61DUO0NqyyL._SX3000_.jpg" alt="" />
+    <Jewelery data={data}/>
+    <img className='advertisement' src="https://m.media-amazon.com/images/I/61TD5JLGhIL._SX3000_.jpg" alt="" />
+    <Electronics data={data}/>
 
-  
-    
-     
+ 
+
+
+
+
+     <style jsx>{`
+       .advertisement{
+         width:100%;
+         max-width:100%;
+        height:65vh;
+        object-fit:contain;
+       }
+
+       @media screen and (max-width:500px){
+        .advertisement{
+        height:100%;
+       }
+       
+       }
+       
+       `}
+
+     </style>
     </>
   )
 }

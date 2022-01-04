@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import ScrollToTop from "react-scroll-to-top";
 
 import { UserProvider } from '@auth0/nextjs-auth0';
 import Layout from '../components/Layout';
@@ -8,6 +9,7 @@ export default function App({ Component, pageProps }) {
     <UserProvider>
       <AppProvider>
       <Layout>
+    <ScrollToTop smooth  />
       <Component {...pageProps} />
       </Layout>
       </AppProvider>

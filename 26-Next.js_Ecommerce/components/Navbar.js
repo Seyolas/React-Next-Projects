@@ -3,21 +3,28 @@ import { BiCart} from "react-icons/bi";
 import { BsFillSuitHeartFill} from "react-icons/bs";
 import { AiOutlineUser} from "react-icons/ai";
 import { FiLogOut, FiAlignJustify } from "react-icons/fi";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FaTimes } from 'react-icons/fa'
 import { useGlobalContext } from './Context';
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import {useRouter} from "next/router"
+
+
+
+
+
+
 
 const Navbar = () => {
-    const notify = () => toast('You need to login');
+    const router = useRouter();
 
-    
     const [sidebar,setSidebar] = useState(false);
-    const [search,setSearch] = useState();
+   
     const [results,setResults] = useState();
     
-    const {user, error, isLoading,fav,favItems,favCount,basketCount,setBasket} = useGlobalContext();
+    const {user, error, isLoading,fav,favItems,
+        favCount,basketCount,setBasket,search,setSearch} = useGlobalContext();
 
     const openSideMenu = ()=>{
         setSidebar(true);
@@ -29,10 +36,16 @@ const Navbar = () => {
     const handleSearch = (e)=>{
         e.preventDefault();
         const query = e.target.value;
-        if (query) {
-        setSearch(e.target.value);
-        }
+        setSearch(query);
+            
         
+        
+    }
+
+    const handleSubmit =(e)=>{
+        e.preventDefault();
+        router.push('/products')
+          
     }
 
     return (
@@ -47,16 +60,19 @@ const Navbar = () => {
 
             {user ? <a href="/api/auth/logout"><FiLogOut/>Logout</a>:<a href="/api/auth/login"><AiOutlineUser/>Login</a> }
             {user && <p>Welcome {user.name}!</p>}
-                <Link href='/'><a>Women</a></Link>
-                <Link href='/'><a>Men</a></Link>
-                <Link href='/'><a>Jewelery</a></Link>
-                <Link href='/'><a>Electronics</a></Link>
+                <Link href={router.pathname === '/' ? '#women-section' : '/' }><a>Women</a></Link>
+                <Link href={router.pathname === '/' ? '#men-section' : '/' }><a>Men</a></Link>
+                <Link href={router.pathname === '/' ? '#jewelery-section' : '/' }><a>Jewelery</a></Link>
+                <Link href={router.pathname === '/' ? '#electronics-section' : '/' }><a>Electronics</a></Link>
             </ul>
             </aside>
             
            <Link href='/'><a><img className='logo' src="/logo.svg"  alt="logo" /></a></Link> 
             <ul className='general-ul'>
-            <input type="search" onChange={(e)=>handleSearch(e)} value={search} placeholder="Search"/>
+                <form onSubmit={handleSubmit}>
+                <input type="search" onChange={(e)=>handleSearch(e)} value={search} placeholder="Search"/>
+
+                </form>
                 <ul className='small-ul'>
                
               <Link href={`${user ? '/favourites':'/api/auth/login'} `}>
@@ -67,8 +83,10 @@ const Navbar = () => {
               
             </ul>
 
-            {user ? <a className='logout-link' href="/api/auth/logout"><FiLogOut/>Logout</a>:<a className='login-link' href="/api/auth/login"><AiOutlineUser/>Login</a> }
             {user && <p className='welcome-p'>Welcome {user.name}!</p>}
+            {user ? <a className='logout-link' href="/api/auth/logout">
+            <FiLogOut/>Logout</a>:<a className='login-link' href="/api/auth/login">
+                <AiOutlineUser/>Login</a> }
             
 
           
@@ -81,12 +99,14 @@ const Navbar = () => {
                 left: 0;
                 width: auto;
                 height: 100%;
-                background-color:#f3f4f6;
+                background-color:#fff;
+                border: 1px solid #eaeaea;
                 display: grid;
                 grid-template-rows: auto 1fr auto;
                 grid-gap:1rem;
                 transition: all 0.3s linear;
                 transform: translate(-100%);
+                z-index:10;
 
                 }
 
@@ -225,8 +245,8 @@ const Navbar = () => {
             }
             @media screen and (max-width:500px){
               .menu-bar{
-                    margin:0 1rem;
-                    margin-left:1rem;
+                    margin:0 ;
+                    margin-left:0;
               }
                 .small-ul{
                     display:flex;
@@ -234,19 +254,18 @@ const Navbar = () => {
                     margin-left:1rem;
                 }
                 .small-ul li{
-                    margin:0 0.2rem;
+                    margin:0 0.3rem;
                 }
                
                 input[type=search] {
                 padding: 9px 10px 9px 32px;
-                width: 35vw;
-                background: url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-                border: solid 1px #ccc;
-                -webkit-transition: all .5s;
-                -moz-transition: all .5s;
-                transition: all .5s;
-            }
+                width: 50vw;
+                }
+
+                input[type=search]:focus {
+                width: 46vw;
                
+            }   
 
             }
 
