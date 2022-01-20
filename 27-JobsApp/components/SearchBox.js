@@ -11,7 +11,7 @@ const mapStateToProps = store =>{
       setQueries:(data)=>dispatch({type:'SET_QUERY', payload:data}),
     //   decrease:(id,amount)=>dispatch({type:'DECREASE', payload:{id,amount}}),
     }
-    
+   
   }
 
 const SearchBox = ({JobTitleQuery,LocationQuery,setQueries}) => {
@@ -28,21 +28,11 @@ const SearchBox = ({JobTitleQuery,LocationQuery,setQueries}) => {
         <form onSubmit={handleSubmit(onSubmit)}>
              <input className='search' {...register('jobtitle',{ required: true, maxLength: 70 })} placeholder="Position name or company name" /> 
              <input className='location' {...register('location', { required: true, maxLength:40 })} placeholder="Where" />
-             <input className='btn'  type="submit" />
-        
-           
-          
+             <input value='Search' className='btn'  type="submit" />
         </form>
 
-        <p>
-        {JobTitleQuery}
-        </p>
+
         
-       <p>
-       {LocationQuery}
-       </p>
-
-
 
         <style jsx>{`
                 form{
