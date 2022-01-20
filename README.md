@@ -1,2 +1,2 @@
 
-### Checkout how they look -> https://seydisaritas.vercel.app/
+### Live -> https://seydisaritas.vercel.app/
