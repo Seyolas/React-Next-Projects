@@ -1,2 +1,2 @@
 
-### Go live! -> https://seydisaritas.vercel.app/
+### Live -> https://seydisaritas.vercel.app/
