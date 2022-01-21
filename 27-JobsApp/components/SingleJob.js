@@ -2,7 +2,7 @@ import React from 'react';
 import { FaRegHeart} from "react-icons/fa";
 import ReactCanvasConfetti from "react-canvas-confetti";
 import { connect } from 'react-redux'
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback,useState } from 'react';
 const mapStateToProps = store =>{
     const {selectedItemId, selectedItem} = store.searchReducer;
     return {selectedItem,selectedItemId }
@@ -17,15 +17,8 @@ const mapStateToProps = store =>{
     left: 0
   };
 
-//   const mapDispatchToProps = (dispatch) =>{
-//     return { 
-//       setQueries:(data)=>dispatch({type:'SET_QUERY', payload:data}),
-//       setSelectedItem:(id,qualifications_and_requirements)=>dispatch({type:'SET_SELECTED_ITEM', payload:{id,qualifications_and_requirements}}),
-//     }
-    
-//   }
+const SingleJob = ({selectedItem}) => {
 
-const SingleJob = ({selectedItem,selectedItemId,}) => {
     const array = selectedItem.split('.');
     const clearArray = array.filter(i => i)
     
@@ -75,9 +68,9 @@ const SingleJob = ({selectedItem,selectedItemId,}) => {
 
 
   return(
+        <>
 
-        <aside>
-
+        <aside className={selectedItem !='' ? null : 'hidden'}>
                 
         <div className="button-container">
             <button onClick={fire} className='apply'>Apply now!</button>
@@ -87,8 +80,8 @@ const SingleJob = ({selectedItem,selectedItemId,}) => {
 
 
           <ul>
-              {clearArray.map((item)=>{
-                 return <li>{item}</li>
+              {clearArray.map((item,index)=>{
+                 return <li key={index}>{item}</li>
               })}
           </ul>
     
@@ -107,8 +100,10 @@ const SingleJob = ({selectedItem,selectedItemId,}) => {
                 position:fixed;
                 right:190px;
                 border-radius:20px;
-
             }            
+            .hidden{
+                display:none;
+            }
             ul{
                 position:absolute;
                 left:40px;
@@ -139,6 +134,8 @@ const SingleJob = ({selectedItem,selectedItemId,}) => {
 
         </style>
         </aside>
+</>
+
   )
 };
 

@@ -16,16 +16,17 @@ const mapStateToProps = store =>{
   }
 
 
-const JobsList = ({JobTitleQuery,LocationQuery,setSelectedItem,selectedItemId,selectedItem,data}) => {
+const JobsList = ({JobTitleQuery,LocationQuery,setSelectedItem,data}) => {
 
     let searchResult;
 
-    searchResult = data.filter((item)=>item.job_title.includes(JobTitleQuery) && item.location.includes(LocationQuery))
+    searchResult = data.filter((item)=>item.job_title.includes(JobTitleQuery) 
+    && item.location.includes(LocationQuery))
     
 
 
     if (searchResult.length===0) {
-        return <h1>No Result Keje</h1>
+        return <h1 style={{textAlign:'center'}}>No Result dude</h1>
     }
 
     return (
