@@ -17,7 +17,7 @@ const canvasStyles = {
   
 
 
-const basket = () => {
+const Basket = () => {
 
     const {basketItems,uniqueBasketItems,removeBasketItem} = useGlobalContext();      
  
@@ -88,7 +88,7 @@ const basket = () => {
              amount = Number(amount+itemPrice);
              console.log(amount);
             return (
-              <div className="item">
+              <div key={id} className="item">
 
                 <div className="first-col">
                 <div><img className="image" src={image} alt={title} /></div>
@@ -106,7 +106,7 @@ const basket = () => {
 
              })}
            { <div className="btn-div">
-            <button className="css-button-3d--blue"><Link href='/products'><a>Continue Shopping</a></Link></button>
+            <button className="css-button-3d--blue"><Link href='/Products'><a>Continue Shopping</a></Link></button>
                 <button className="css-button-3d--blue" onClick={fire}>Proceed to checkout</button>
                 <ReactCanvasConfetti refConfetti={getInstance} style={canvasStyles} />
             </div>
@@ -265,7 +265,7 @@ const basket = () => {
 
 
       <div className="btn-div">
-              <Link href='/products'><a className="css-button-3d--blue">Fill it</a></Link>
+              <Link href='/Products'><a className="css-button-3d--blue">Fill it</a></Link>
           </div>
 
       
@@ -324,27 +324,10 @@ const basket = () => {
   )
 }
 
-export default basket
+export default Basket
 
 
-                {/* <div className="favs">
-                {uniqueBasketItems.map((i)=>{
-                    const {id,image,title,price,description} = i;
-                    return(
-                     <div className="item" key={id}>
-                        <Link key={id}  href={`/product/${id}`}><a className="link">
-                        <img width={100} src={image} alt={title} />
-                        <p>{formatPrice(price)}</p>
-                        <p>{description}</p>
-                        </a>
-                        </Link>
-                        <button className="remove-btn" onClick={()=>removeBasketItem(id)} 
-                        type="button"><AiFillDelete/></button>
-                    </div>  
-                    )
-                })}
-            </div> */}
-
+              
 
 
 

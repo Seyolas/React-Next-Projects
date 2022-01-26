@@ -8,7 +8,7 @@ const Header1 = () => {
         <h1>Best ecommerce website ever</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
           Modi rem non enim incidunt necessitatibus doloremque id totam quisquam dolore nobis?</p>
-          <Link href='/products'><a className='btn'>Discover More</a></Link>
+          <Link href='/Products'><a className='btn'>Discover More</a></Link>
       </div>
       
       <img  src="https://dfcdn.defacto.com.tr/Mobile/3lu-1437x2100_d8fc0130-9c72-490c-bdcd-33a155784edb_8b7a86fd-241f-4e56-bc51-299e257d681d_DI_308.jpg" alt="slide" />

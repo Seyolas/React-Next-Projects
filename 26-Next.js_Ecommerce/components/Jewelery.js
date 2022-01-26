@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 
 
-const Jewelery = React.memo(({data}) => {
+const Jewelery =({data}) => {
     
     const [products,setProducts] = useState(data);
 
@@ -101,6 +101,6 @@ const Jewelery = React.memo(({data}) => {
 
                 
     )
-})
+}
 
 export default Jewelery

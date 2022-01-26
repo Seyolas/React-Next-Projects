@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AiFillDelete } from "react-icons/ai";
 import {formatPrice} from '../components/utils/helpers'
 
-const favourites = () => {
+const Favourites = () => {
 
     const {favItems,uniqueFavItems,removeFavItem} = useGlobalContext();
 
@@ -16,8 +16,8 @@ const favourites = () => {
                 {uniqueFavItems.map((i)=>{
                     const {id,image,title,price,description} = i;
                     return(
-                        <div className="item">
-                            <Link key={id}  href={`/product/${id}`}><a className="link">
+                        <div key={id} className="item">
+                            <Link href={`/product/${id}`}><a className="link">
                             <img width={100} src={image} alt={title} />
                             <p>{description.substring(0,15)}...</p>
                             <p className="price">{formatPrice(price)}</p>
@@ -33,7 +33,7 @@ const favourites = () => {
             </div>
 
             <div className="btn-div">
-                <Link href='/products'><a className="css-button-3d--blue">Contunie Shopping</a></Link>
+                <Link href='/Products'><a className="css-button-3d--blue">Contunie Shopping</a></Link>
             </div>
 
             <style jsx>{`
@@ -157,7 +157,7 @@ const favourites = () => {
 
 
         <div className="btn-div">
-                <Link href='/products'><a className="css-button-3d--blue">Go products</a></Link>
+                <Link href='/Products'><a className="css-button-3d--blue">Go products</a></Link>
             </div>
 
         
@@ -216,4 +216,4 @@ const favourites = () => {
     )
 }
 
-export default favourites
+export default Favourites

@@ -44,7 +44,7 @@ const Navbar = () => {
 
     const handleSubmit =(e)=>{
         e.preventDefault();
-        router.push('/products')
+        router.push('/Products')
           
     }
 
@@ -75,10 +75,10 @@ const Navbar = () => {
                 </form>
                 <ul className='small-ul'>
                
-              <Link href={`${user ? '/favourites':'/api/auth/login'} `}>
+              <Link href={`${user ? '/Favourites':'/api/auth/login'} `}>
                   <a><li><BsFillSuitHeartFill/>
                   <span>{favCount === 0 ? '':favCount}</span></li></a></Link> 
-                <Link href={`${user ? '/basket':'/api/auth/login'} `}><a><li><BiCart/><span>{basketCount === 0 ? '' : basketCount}</span></li></a></Link>  
+                <Link href={`${user ? '/Basket':'/api/auth/login'} `}><a><li><BiCart/><span>{basketCount === 0 ? '' : basketCount}</span></li></a></Link>  
                 </ul>
               
             </ul>

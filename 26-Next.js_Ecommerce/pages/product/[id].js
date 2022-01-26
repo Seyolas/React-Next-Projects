@@ -31,10 +31,9 @@ export const getStaticProps = async (context)=>{
 }
 
 
-const singleproduct = ({product}) => {
+const Singleproduct = ({product}) => {
 
     const [fakeAdet,setFakeAdet] = useState(1);
-    const [info,setInfo] = useState(false);
 
     const {user, error, isLoading,setFavitems,setBasketItems} = useGlobalContext();
 
@@ -260,4 +259,4 @@ const singleproduct = ({product}) => {
     )
 }
 
-export default singleproduct
+export default Singleproduct

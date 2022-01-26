@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { formatPrice } from './utils/helpers';
 import Carousel from 'react-elastic-carousel'
 import Link from 'next/link';
 
 
 
-const Women = React.memo(({data}) => {
+const Women = ({data}) => {
     
     const [products,setProducts] = useState(data);
 
@@ -99,6 +99,6 @@ const Women = React.memo(({data}) => {
 
                 
     )
-})
+}
 
 export default Women

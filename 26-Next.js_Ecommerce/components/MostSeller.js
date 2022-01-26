@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { formatPrice } from './utils/helpers';
 import Carousel from 'react-elastic-carousel'
 import Link from 'next/link';
-const MostSeller = React.memo(({data}) => {
+
+
+
+const MostSeller = ({data}) => {
     
     const [products,setProducts] = useState(data);
 
@@ -102,6 +105,6 @@ const MostSeller = React.memo(({data}) => {
 
                 
     )
-})
+}
 
 export default MostSeller

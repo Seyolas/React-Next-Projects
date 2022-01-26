@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { formatPrice } from './utils/helpers';
-import Carousel from 'react-elastic-carousel'
+import Carousel from 'react-elastic-carousel';
 import Link from 'next/link';
 
 
+const Electronics = ({data}) => {
 
-const Electronics = React.memo(({data}) => {
-    
+
     const [products,setProducts] = useState(data);
 
     let mostSeller = products.filter((item)=>item.category === "electronics")
@@ -101,6 +101,6 @@ const Electronics = React.memo(({data}) => {
 
                 
     )
-})
+}
 
 export default Electronics

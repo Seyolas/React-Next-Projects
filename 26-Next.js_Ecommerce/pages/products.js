@@ -17,7 +17,7 @@ export const getStaticProps = async ()=>{
     }
    
 }
-const products = ({data}) => {
+const Products = ({data}) => {
     const {search,setSearch} = useGlobalContext();
     const [notfound,setNotFound] = useState(false);
     const [products,setProducts] = useState(data);
@@ -318,4 +318,4 @@ const products = ({data}) => {
     )
 }
 
-export default products
+export default Products
